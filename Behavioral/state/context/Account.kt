@@ -2,7 +2,7 @@ package state.context
 
 import state.concreteState
 
-class Account { // corrigido
+class Account {
     var state: State
     var number: String
     var balance: Double

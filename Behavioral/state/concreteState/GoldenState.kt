@@ -3,10 +3,16 @@ package state.concreteState
 import state.state
 import state.context
 
-class GoldenState(account: Account, 
-                  inferiorLimit: Double = 1000.0,
-                  superiorLimit: Double = 10000000.0,
-                  val stateType: String = "gold") : State(account, inferiorLimit, superiorLimit) {
+class GoldenState(account: Account) : State(account) {
+    
+    //constructor(account: Account) : super(account)
+
+    override fun setLimits() {
+        super.inferiorLimit = 1000.0
+        super.superiorLimit = 10000000.0
+        super.stateType = "gold"
+    }
+
     override fun stateChangeVerify(){
         if (super.account.balance < 0.0) {
             super.account.state = RedState(super.account)
